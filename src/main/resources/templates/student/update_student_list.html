@@ -1,0 +1,53 @@
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<body>
+<div layout:fragment="content">
+    <div th:if="${students.size() > 0}" class="students">
+        <div class="student-list mb-3" th:if="${students.size() > 0}">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive rounded">
+                        <table class="table m-0">
+                            <thead>
+                            <tr class="bg-light">
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">GPA</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="student: ${students}">
+                                <td class="align-middle" th:text="${student.getId()}"></td>
+                                <td class="align-middle"
+                                    th:text="${student.getFirstName()} + ' ' + ${student.getLastName()}"></td>
+                                <td class="align-middle" th:text="${student.getGender()}"></td>
+                                <td class="align-middle"
+                                    th:text="${student.getAddress() + ', ' + student.getState() + ', ' + student.getZipcode()}"></td>
+                                <td class="align-middle" th:text="${student.getEmail()}"></td>
+                                <td class="align-middle"
+                                    th:text="${student.getCumulativeGpa() != null ? student.getCumulativeGpa() : 'N/A'}"></td>
+                                <td class="align-middle">
+                                    <a th:href="@{'/studentsystem/students/update/' + ${student.getId()}}">
+                                        <i style="color: rgb(255, 110, 0)"
+                                           class="fa-regular fa-pen-to-square icons update-icon"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-3" th:if="${students.size() == 0}">
+        <p class="text-muted">There are no students to update</p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<body>
+<div layout:fragment="content">
+    <div class="mb-3 pt-3 pb-3 d-flex justify-content-center align-items-center">
+        <div>
+            <h3 class="m-0 ml-2">
+                Courses
+            </h3>
+            <p class="m-0 ml-2 text-muted">All active courses</p>
+        </div>
+        <div class="ml-auto d-flex justify-content-center align-items-center pl-4 pr-4">
+            <div class="mr-3">
+                <i class="fa-solid fa-book icons"></i>
+            </div>
+            <div class="ml-auto">
+                <p class="m-0 text-muted">Count</p>
+                <h4>
+                    <span class="bold badge badge-secondary" th:text="${courses.size()}"></span>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-md-4 col-lg-3 mb-4" th:each="course :${courses}">
+            <div class="card h-100">
+                <img height="150px" th:src="@{/course_background.png}" class="card-img-top" alt="Course Background">
+                <div class="card-body d-block">
+                    <div class="course-details links">
+                        <a th:href="@{'/studentsystem/course/details/' + ${course.id}}"><h5 class="m-0" th:text="${course.name}"></h5></a>
+                        <small th:text="${course.courseCode}"></small>
+                    </div>
+                    <div class="mt-2">
+                        <span class="badge badge-info" th:text="'Students enrolled: ' + ${course.studentsEnrolled}"></span>
+                        <span class="badge badge-info" th:text="'Students completed: ' + ${course.studentsCompleted}"></span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="d-inline d-flex align-items-center">
+                        <img th:if="${course.getMentor().gender.toString() == 'M'}" height="30px" width="30px" class="rounded-circle mr-2" th:src="@{/male_avatar.png}" alt="Male Avatar">
+                        <img th:if="${course.getMentor().gender.toString() == 'F'}" height="30px" width="30px" class="rounded-circle mr-2" th:src="@{/female_avatar.png}" alt="Female Avatar">
+                        <span th:text="'Dr. ' + ${course.getMentor().firstName} + ' ' + ${course.getMentor().lastName}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

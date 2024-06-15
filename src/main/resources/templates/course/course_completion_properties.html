@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<body>
+<div layout:fragment="content">
+    <div class="mb-3 pt-3 pb-3 d-flex align-items-center">
+        <div>
+            <h3 th:text="${courses.get(0).name} + ' by Dr. '
+                         + ${courses.get(0).getMentor().firstName} + ' ' + ${courses.get(0).getMentor().lastName}"
+                class="m-0">
+            </h3>
+            <p class="m-0 text-muted">Student</p>
+        </div>
+    </div>
+    <div>
+        <p><strong>Id:</strong> <span th:text="${student.getId()}"></span></p>
+        <p><strong>First name:</strong> <span th:text="${student.getFirstName()}"></span></p>
+        <p><strong>Last name:</strong> <span th:text="${student.getLastName()}"></span></p>
+        <form th:action="@{'/studentsystem/courses/complete/' + ${student.getId()} + '/' + ${courses.get(0).getId()}}"
+              th:method="put">
+            <p><strong>Select a grade: </strong>
+                <label>
+                    <select name="grade" class="form-control">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="F">F</option>
+                    </select>
+                </label>
+            </p>
+            <button class="btn btn-success" type="submit">
+                Complete
+            </button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

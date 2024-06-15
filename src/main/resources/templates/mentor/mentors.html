@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<div layout:fragment="content">
+    <div class="mb-3 pt-3 pb-3 d-flex justify-content-center align-items-center">
+        <div>
+            <h3 class="m-0 ml-2">
+                Mentors
+            </h3>
+            <p class="m-0 ml-2 text-muted">All active mentors</p>
+        </div>
+        <div class="ml-auto d-flex justify-content-center align-items-center pl-4 pr-4">
+            <div class="mr-3">
+                <i class="fa-solid fa-user icons"></i>
+            </div>
+            <div class="ml-auto">
+                <p class="m-0 text-muted">Count</p>
+                <h4>
+                    <span class="bold badge badge-secondary" th:text="${mentors.size()}"></span>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div th:each="mentor: ${mentors}" class="col-md-12 col-lg-6 mb-4">
+            <div class="card widget-user h-100">
+                <div class="card-body">
+                    <div class="row no-gutters">
+                        <div class="col-auto">
+                            <img th:if="${mentor.gender.toString() == 'F'}" th:src="@{/female_avatar.png}" class="img-fluid rounded-circle avatar-md" alt="Female Avatar">
+                            <img th:if="${mentor.gender.toString() == 'M'}" th:src="@{/male_avatar.png}" class="img-fluid rounded-circle avatar-md" alt="Male Avatar">
+                        </div>
+                        <div class="col pl-3">
+                            <div class="wid-u-info">
+                                <h5 class="mt-0 mb-1">
+                                    <span th:text="${'Dr. ' + mentor.firstName + ' '}"></span>
+                                    <span th:text="${mentor.lastName}"></span>
+                                </h5>
+                                <p class="text-muted mb-0" th:text="${mentor.email}"></p>
+                                <p class="text-muted mb-0" th:text="${mentor.phoneNumber}"></p>
+                                <div class="mt-3">
+                                    <span class="badge badge-info mr-2" th:each="course :${mentor.courses}" th:text="${course.name}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

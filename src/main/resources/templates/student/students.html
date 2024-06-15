@@ -1,0 +1,63 @@
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<body>
+<div layout:fragment="content">
+    <div class="mb-3 pt-3 pb-3 d-flex justify-content-center align-items-center">
+        <div>
+            <h3 class="m-0 ml-2">
+                Students
+            </h3>
+            <p class="m-0 ml-2 text-muted">All active students</p>
+        </div>
+        <div class="ml-auto d-flex justify-content-center align-items-center pl-4 pr-4">
+            <div class="mr-3">
+                <i class="fa-solid fa-graduation-cap icons"></i>
+            </div>
+            <div class="ml-auto">
+                <p class="m-0 text-muted">Count</p>
+                <h4>
+                    <span class="bold badge badge-secondary" th:text="${students.size()}"></span>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div th:if="${students.size() > 0}" class="students">
+        <div class="student-list mb-3" th:if="${students.size() > 0}">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive rounded">
+                        <table class="table m-0">
+                            <thead>
+                            <tr class="bg-light">
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone Number</th>
+                                <th scope="col">Date of Birth</th>
+                                <th scope="col">GPA</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="student: ${students}">
+                                <td class="align-middle" th:text="${student.getId()}"></td>
+                                <td class="align-middle" th:text="${student.getFirstName()} + ' ' + ${student.getLastName()}"></td>
+                                <td class="align-middle" th:text="${student.getGender()}"></td>
+                                <td class="align-middle" th:text="${student.getAddress() + ', ' + student.getState() + ', ' + student.getZipcode()}"></td>
+                                <td class="align-middle" th:text="${student.getEmail()}"></td>
+                                <td class="align-middle" th:text="${student.getPhoneNumber()}"></td>
+                                <td class="align-middle" th:text="${student.getDateOfBirth()}"></td>
+                                <td class="align-middle"  th:text="${student.getCumulativeGpa() != null ? student.getCumulativeGpa() : 'N/A'}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

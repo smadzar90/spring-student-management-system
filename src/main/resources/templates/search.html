@@ -1,0 +1,43 @@
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<body>
+<div layout:fragment="content">
+    <div class="container mt-5">
+        <h4 class="mb-3">Search Student by Id</h4>
+        <form th:if="${registration == true}" th:action="@{/studentsystem/students/search/registration}"
+              th:method="get">
+            <div class="input-group mt-4" style="max-width: 500px">
+                <input type="search" name="id" class="form-control rounded" placeholder="Enter a Student Id"
+                       aria-label="Search" aria-describedby="search-addon"/>
+                <button class="btn btn-outline-info" type="submit" data-mdb-ripple-init>Search</button>
+            </div>
+            <span class="small text-danger" th:if="${notFound == true}">Student not found</span>
+        </form>
+        <form th:if="${deletion == true}" th:action="@{/studentsystem/students/search/deletion}" th:method="get">
+            <div class="input-group mt-4" style="max-width: 500px">
+                <input type="search" name="id" class="form-control rounded" placeholder="Enter a student id"
+                       aria-label="Search" aria-describedby="search-addon"/>
+                <button type="submit" class="btn btn-outline-info" data-mdb-ripple-init>Search</button>
+            </div>
+            <span class="small text-danger" th:if="${notFound == true}">Student not found</span>
+        </form>
+        <form th:if="${completion == true}" th:action="@{/studentsystem/students/search/completion}" th:method="get">
+            <div class="input-group mt-4" style="max-width: 500px">
+                <input type="search" name="id" class="form-control rounded" placeholder="Enter a student id"
+                       aria-label="Search" aria-describedby="search-addon"/>
+                <button type="submit" class="btn btn-outline-info" data-mdb-ripple-init>Search</button>
+            </div>
+            <span class="small text-danger" th:if="${notFound == true}">Student not found</span>
+        </form>
+        <form th:if="${activity == true}" th:action="@{/studentsystem/students/search/activity}" th:method="get">
+            <div class="input-group mt-4" style="max-width: 500px">
+                <input type="search" name="id" class="form-control rounded" placeholder="Enter a student id"
+                       aria-label="Search" aria-describedby="search-addon"/>
+                <button type="submit" class="btn btn-outline-info" data-mdb-ripple-init>Search</button>
+            </div>
+            <span class="small text-danger" th:if="${notFound == true}">Student not found</span>
+        </form>
+    </div>
+</div>
+</body>

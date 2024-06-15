@@ -1,0 +1,45 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - StudentManagement</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/styles.css}" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 0px !important;
+        }
+    </style>
+</head>
+<body>
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="login-container p-5">
+        <form class="p-3" th:action="@{/login}" method="post" th:object="${admin}">
+            <div class="text-center mb-4">
+                <img th:src="@{/admin_icon.png}" alt="Admin image">
+            </div>
+            <h3 class="text-center">Admin Log In</h3>
+            <ul class="p-0 pl-3">
+                <li class="text-danger small" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></li>
+                <li class="text-danger small" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></li>
+                <li class="text-danger small" th:if="${error != null}" th:text="${error}"></li>
+            </ul>
+            <div class="form-group mt-4">
+                <label for="username" class="sr-only">Username</label>
+                <input type="text" th:field="*{username}" class="form-control input-field" id="username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" th:field="*{password}" class="form-control input-field" id="password" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Log In</button>
+        </form>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

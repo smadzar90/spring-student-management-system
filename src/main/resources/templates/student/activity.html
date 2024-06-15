@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<body>
+<div layout:fragment="content">
+    <div class="mb-3 pt-3 pb-3 d-flex align-items-center">
+        <div>
+            <h3 class="m-0">
+                Student Activity
+            </h3>
+            <p class="m-0 text-muted" th:text="'ID = ' + ${student.getId()}"></p>
+        </div>
+    </div>
+    <div>
+        <p><strong>First name:</strong> <span th:text="${student.getFirstName()}"></span></p>
+        <p><strong>Last name:</strong> <span th:text="${student.getLastName()}"></span></p>
+        <p>
+            <strong>Gender:</strong> <span th:text="${student.getGender()} == 'M' ? 'Male' : 'Female'"></span>
+        </p>
+        <p><strong>Date of birth:</strong> <span th:text="${student.getDateOfBirth()}"></span></p>
+        <p><strong>Address:</strong> <span
+                th:text="${student.getAddress() + ', ' + student.getState() + ', ' + student.getZipcode()}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${student.getEmail()}"></span></p>
+        <p><strong>Phone number:</strong> <span th:text="${student.getPhoneNumber()}"></span></p>
+        <p><strong>Cumulative GPA:</strong> <span th:text="${student.getCumulativeGpa()}"></span></p>
+        <p><strong>Updated On:</strong> <span
+                th:text="${#temporals.format(student.getUpdatedOn(), 'dd MMM yyyy hh:mm a')}"></span></p>
+        <p><strong>Created On:</strong> <span
+                th:text="${#temporals.format(student.getCreatedOn(), 'dd MMM yyyy hh:mm a')}"></span></p>
+        <div class="student-list mb-4 mt-5" th:if="${notCompletedEnrollments.size() > 0}">
+            <h5>Enrolled Courses</h5>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive rounded">
+                        <table class="table m-0">
+                            <thead>
+                            <tr class="bg-light">
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Mentor</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Grade</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="enrollment: ${notCompletedEnrollments}">
+                                <td class="align-middle" th:text="${enrollment.getCourse().getId()}"></td>
+                                <td class="align-middle" th:text="${enrollment.getCourse().getName()}"></td>
+                                <td class="align-middle"
+                                    th:text="'Dr. ' + ${enrollment.getCourse().getMentor().getFirstName()} + ' ' + ${enrollment.getCourse().getMentor().getFirstName()}"></td>
+                                <td class="align-middle">
+                                    <span class="badge badge-secondary">Enrolled</span>
+                                </td>
+                                <td class="align-middle">N/A</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4 mt-5 text-muted" th:unless="${notCompletedEnrollments.size() > 0}">There are no enrolled
+            courses
+        </div>
+        <div class="student-list mb-4" th:if="${completedEnrollments.size() > 0}">
+            <h5>Completed Courses</h5>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive rounded">
+                        <table class="table m-0">
+                            <thead>
+                            <tr class="bg-light">
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Mentor</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Grade</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="enrollment: ${completedEnrollments}">
+                                <td class="align-middle" th:text="${enrollment.getCourse().getId()}"></td>
+                                <td class="align-middle" th:text="${enrollment.getCourse().getName()}"></td>
+                                <td class="align-middle"
+                                    th:text="'Dr. ' + ${enrollment.getCourse().getMentor().getFirstName()} + ' ' + ${enrollment.getCourse().getMentor().getFirstName()}"></td>
+                                <td class="align-middle">
+                                    <span class="badge badge-success" th:text="Completed"></span>
+                                </td>
+                                <td class="align-middle" th:text="${enrollment.getGrade()}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-muted mb-4" th:unless="${completedEnrollments.size() > 0}">There are no completed
+            courses
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<body>
+<div layout:fragment="content">
+    <div class="mb-3 pt-3 pb-3 d-flex align-items-center">
+        <div>
+            <h3 class="m-0" th:text="'Details - ' + ${course.name}">
+            </h3>
+            <p class="m-0 text-muted" th:text="${course.courseCode}"></p>
+        </div>
+    </div>
+    <div>
+        <p><strong>Description:</strong> <span th:text="${course.description}"></span></p>
+        <p><strong>Students Enrolled:</strong> <span th:text="${course.studentsEnrolled}"></span></p>
+        <p><strong>Students Completed:</strong> <span th:text="${course.studentsCompleted}"></span></p>
+        <p><strong>Updated On:</strong> <span
+                th:text="${#temporals.format(course.updatedOn, 'dd MMM yyyy hh:mm a')}"></span></p>
+        <div class="student-list" th:if="${course.getEnrollments().size() > 0}">
+            <h5>Students</h5>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive rounded">
+                        <table class="table m-0">
+                            <thead>
+                            <tr class="bg-light">
+                                <th scope="col">ID</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Grade</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="enrollment: ${course.getEnrollments()}">
+                                <td class="align-middle" th:text="${enrollment.getStudent().getId()}"></td>
+                                <td class="align-middle" th:text="${enrollment.getStudent().getFirstName()}"></td>
+                                <td class="align-middle" th:text="${enrollment.getStudent().getLastName()}"></td>
+                                <td class="align-middle">
+                                    <span class="badge badge-success" th:if="${enrollment.completed} == true"
+                                          th:text="Completed"></span>
+                                    <span class="badge badge-secondary" th:if="${enrollment.completed} == false"
+                                          th:text="Enrolled"></span>
+                                </td>
+                                <td class="align-middle"
+                                    th:text="${enrollment.getGrade() != null ? enrollment.getGrade() : 'N/A'}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-muted pt-3 mb-5"
+         th:text="${course.getEnrollments().size() == 0 ? 'There are no participants' : ''}"></div>
+</div>
+</body>
+</html>
