@@ -30,7 +30,7 @@
                                     th:text="${student.getAddress() + ', ' + student.getState() + ', ' + student.getZipcode()}"></td>
                                 <td class="align-middle" th:text="${student.getEmail()}"></td>
                                 <td class="align-middle"
-                                    th:text="${student.getCumulativeGpa() != null ? student.getCumulativeGpa() : 'N/A'}"></td>
+                                    th:text="${student.getCumulativeGpa() != null ? #numbers.formatDecimal(student.getCumulativeGpa(), 1, 2) : 'N/A'}"></td>
                                 <td class="align-middle">
                                     <a th:href="@{'/studentsystem/students/update/' + ${student.getId()}}">
                                         <i style="color: rgb(255, 110, 0)"

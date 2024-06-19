@@ -23,7 +23,9 @@
                 th:text="${student.getAddress() + ', ' + student.getState() + ', ' + student.getZipcode()}"></span></p>
         <p><strong>Email:</strong> <span th:text="${student.getEmail()}"></span></p>
         <p><strong>Phone number:</strong> <span th:text="${student.getPhoneNumber()}"></span></p>
-        <p><strong>Cumulative GPA:</strong> <span th:text="${student.getCumulativeGpa()}"></span></p>
+        <p><strong>Cumulative GPA:</strong> <span
+                th:text="${student.getCumulativeGpa() != null ? #numbers.formatDecimal(student.getCumulativeGpa(), 1, 2) : 'N/A'}"></span>
+        </p>
         <p><strong>Updated On:</strong> <span
                 th:text="${#temporals.format(student.getUpdatedOn(), 'dd MMM yyyy hh:mm a')}"></span></p>
         <p><strong>Created On:</strong> <span

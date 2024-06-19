@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login - StudentManagement</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/main_icon.png}"/>
     <link th:href="@{/styles.css}" rel="stylesheet">
     <style>
         body {
@@ -28,11 +29,13 @@
             </ul>
             <div class="form-group mt-4">
                 <label for="username" class="sr-only">Username</label>
-                <input type="text" th:field="*{username}" class="form-control input-field" id="username" placeholder="Enter username">
+                <input type="text" th:field="*{username}" class="form-control input-field" id="username"
+                       placeholder="Enter username">
             </div>
             <div class="form-group">
                 <label for="password" class="sr-only">Password</label>
-                <input type="password" th:field="*{password}" class="form-control input-field" id="password" placeholder="Enter password">
+                <input type="password" th:field="*{password}" class="form-control input-field" id="password"
+                       placeholder="Enter password">
             </div>
             <button type="submit" class="btn btn-primary btn-block">Log In</button>
         </form>

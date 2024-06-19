@@ -3,7 +3,6 @@ package com.management_system.service;
 import com.management_system.model.Admin;
 import com.management_system.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +31,7 @@ public class AdminService {
     public Boolean authenticateAdmin(String username, String password) {
         Admin admin = adminRepository.findByUsername(username);
 
-        if(admin == null) {
+        if (admin == null) {
             return false;
         }
         return encoder.matches(password, admin.getPassword());

@@ -25,6 +25,9 @@ public class AdminController {
 
     @GetMapping("/login")
     public String displayLogInView(Model model, HttpSession session) {
+        if (adminLoggedIn(session)) {
+            return "redirect:/studentsystem";
+        }
         model.addAttribute("admin", new Admin());
         return "admin_login";
     }
@@ -51,4 +54,9 @@ public class AdminController {
         session.invalidate();
         return "redirect:/login";
     }
+
+    private Boolean adminLoggedIn(HttpSession session) {
+        return session.getAttribute("username") != null;
+    }
+
 }

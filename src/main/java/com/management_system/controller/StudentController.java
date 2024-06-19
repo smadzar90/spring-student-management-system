@@ -41,13 +41,14 @@ public class StudentController {
     }
 
     @GetMapping("/students")
-    public String displayStudentsView(HttpSession session, Model model) {
+    public String displayStudentsView(@RequestParam(value = "filter", required = false) String filter, HttpSession session, Model model) {
         if (adminNotLoggedIn(session)) {
             return "redirect:/login";
         }
 
-        List<Student> students = studentService.getAllStudentsByUpdatedOnDesc();
-        setModelAttributes(model, students, "Students", "studentsActive");
+        List<Student> students = filterStudents(filter);
+        setModelAttributes(model, students, "Students");
+        model.addAttribute("studentsActive", true);
         return "student/students";
     }
 
@@ -57,7 +58,7 @@ public class StudentController {
             return "redirect:/login";
         }
 
-        setModelAttributes(model, new Student(), "Add Student", "dashboardActive");
+        setModelAttributes(model, new Student(), "Add Student");
         return "student/add_student";
     }
 
@@ -68,7 +69,7 @@ public class StudentController {
         }
 
         if (bindingResult.hasErrors()) {
-            setModelAttributes(model, student, "Add Student", "dashboardActive");
+            setModelAttributes(model, student, "Add Student");
             return "student/add_student";
         }
 
@@ -82,7 +83,7 @@ public class StudentController {
             return "redirect:/login";
         }
         List<Student> students = studentService.getAllStudentsByUpdatedOnDesc();
-        setModelAttributes(model, students, "Update Student", "dashboardActive");
+        setModelAttributes(model, students, "Update Student");
 
         return "student/update_student_list";
     }
@@ -97,7 +98,7 @@ public class StudentController {
         if (student == null) {
             return "redirect:/studentsystem/students/update";
         }
-        setModelAttributes(model, student, "Update Student", "dashboardActive");
+        setModelAttributes(model, student, "Update Student");
 
         return "/student/update_student";
     }
@@ -115,7 +116,7 @@ public class StudentController {
         }
 
         if (bindingResult.hasErrors()) {
-            setModelAttributes(model, student, "Update Student", "dashboardActive");
+            setModelAttributes(model, student, "Update Student");
             return "student/update_student";
         }
 
@@ -129,7 +130,7 @@ public class StudentController {
             return "redirect:/login";
         }
         List<Student> students = studentService.getAllStudentsByUpdatedOnDesc();
-        setModelAttributes(model, students, "Delete Student", "dashboardActive");
+        setModelAttributes(model, students, "Delete Student");
 
         return "student/delete_student";
     }
@@ -150,7 +151,7 @@ public class StudentController {
         if (adminNotLoggedIn(session)) {
             return "redirect:/login";
         }
-        setModelAttributes(model, "Search Student", "dashboardActive", "registration");
+        setModelAttributes(model, "registration");
         return getString(id, model);
     }
 
@@ -160,7 +161,7 @@ public class StudentController {
             return "redirect:/login";
         }
 
-        setModelAttributes(model, "Search Student", "dashboardActive", "deletion");
+        setModelAttributes(model, "deletion");
         return getString(id, model);
     }
 
@@ -170,7 +171,7 @@ public class StudentController {
             return "redirect:/login";
         }
 
-        setModelAttributes(model, "Search Student", "dashboardActive", "completion");
+        setModelAttributes(model, "completion");
         return getString(id, model);
     }
 
@@ -180,7 +181,7 @@ public class StudentController {
             return "redirect:/login";
         }
 
-        setModelAttributes(model, "Search Student", "dashboardActive", "activity");
+        setModelAttributes(model, "activity");
         return getString(id, model);
     }
 
@@ -197,7 +198,7 @@ public class StudentController {
         List<Enrollment> completedEnrollments = enrollmentService.getCompletedEnrollmentsByStudent(Long.parseLong(id));
         List<Enrollment> notCompletedEnrollments = enrollmentService.getNotCompletedEnrollmentsByStudent(Long.parseLong(id));
 
-        setModelAttributes(model, student, "Student Activity", "dashboardActive");
+        setModelAttributes(model, student, "Student Activity");
         model.addAttribute("completedEnrollments", completedEnrollments);
         model.addAttribute("notCompletedEnrollments", notCompletedEnrollments);
 
@@ -235,21 +236,34 @@ public class StudentController {
         return session.getAttribute("username") == null;
     }
 
-    private void setModelAttributes(Model model, Student student, String title, String activate) {
+    private void setModelAttributes(Model model, Student student, String title) {
         model.addAttribute("title", title);
         model.addAttribute("student", student);
-        model.addAttribute(activate, true);
     }
 
-    private void setModelAttributes(Model model, List<Student> students, String title, String activate) {
+    private void setModelAttributes(Model model, List<Student> students, String title) {
         model.addAttribute("title", title);
         model.addAttribute("students", students);
-        model.addAttribute(activate, true);
     }
 
-    private void setModelAttributes(Model model, String title, String activate, String action) {
-        model.addAttribute("title", title);
-        model.addAttribute(activate, true);
+    private void setModelAttributes(Model model, String action) {
+        model.addAttribute("title", "Search Student");
         model.addAttribute(action, true);
+    }
+
+    private List<Student> filterStudents(String filter) {
+        if (filter == null) {
+            return studentService.getAllStudentsByUpdatedOnDesc();
+        }
+
+        return switch (filter) {
+            case "id" -> studentService.getAllStudentsByID();
+            case "id_desc" -> studentService.getAllStudentsByIDDesc();
+            case "gpa" -> studentService.getAllStudentsByGPA();
+            case "gpa_desc" -> studentService.getAllStudentsByGPADesc();
+            case "dob" -> studentService.getAllStudentsByDOB();
+            case "dob_desc" -> studentService.getAllStudentsByDOBDesc();
+            default -> studentService.getAllStudentsByUpdatedOnDesc();
+        };
     }
 }

@@ -25,6 +25,30 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
+    public List<Student> getAllStudentsByGPA() {
+        return studentRepository.findAllByOrderByCumulativeGpaAsc();
+    }
+
+    public List<Student> getAllStudentsByGPADesc() {
+        return studentRepository.findAllByOrderByCumulativeGpaDesc();
+    }
+
+    public List<Student> getAllStudentsByID() {
+        return studentRepository.findAllByOrderByIdAsc();
+    }
+
+    public List<Student> getAllStudentsByIDDesc() {
+        return studentRepository.findAllByOrderByIdDesc();
+    }
+
+    public List<Student> getAllStudentsByDOB() {
+        return studentRepository.findAllByOrderByDateOfBirthAsc();
+    }
+
+    public List<Student> getAllStudentsByDOBDesc() {
+        return studentRepository.findAllByOrderByDateOfBirthDesc();
+    }
+
     public List<Student> getAllStudentsByUpdatedOnDesc() {
         return studentRepository.findAllByOrderByUpdatedOnDesc();
     }

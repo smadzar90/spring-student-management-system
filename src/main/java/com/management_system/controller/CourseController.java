@@ -60,7 +60,7 @@ public class CourseController {
         }
 
         List<Course> courses = studentService.getUnregisteredCoursesByStudent(student);
-        setModelAttributes(model, student, courses, "Course Registration", "dashboardActive");
+        setModelAttributes(model, student, courses, "Course Registration");
 
         return "course/course_registration";
     }
@@ -88,7 +88,7 @@ public class CourseController {
         }
 
         List<Course> registeredCourses = studentService.getRegisteredCoursesByStudent(student);
-        setModelAttributes(model, student, registeredCourses, "Course Deletion", "dashboardActive");
+        setModelAttributes(model, student, registeredCourses, "Course Deletion");
 
         return "course/course_deletion";
     }
@@ -116,7 +116,7 @@ public class CourseController {
         }
 
         List<Course> registeredCourses = studentService.getRegisteredCoursesByStudent(student);
-        setModelAttributes(model, student, registeredCourses, "Course Completion", "dashboardActive");
+        setModelAttributes(model, student, registeredCourses, "Course Completion");
 
         return "course/course_completion";
     }
@@ -135,7 +135,7 @@ public class CourseController {
         }
 
         List<Course> courses = Collections.singletonList(course);
-        setModelAttributes(model, student, courses, "Course Completion", "dashboardActive");
+        setModelAttributes(model, student, courses, "Course Completion");
 
         return "course/course_completion_properties";
 
@@ -155,11 +155,10 @@ public class CourseController {
         return session.getAttribute("username") == null;
     }
 
-    private void setModelAttributes(Model model, Student student, List<Course> courses, String title, String activated) {
+    private void setModelAttributes(Model model, Student student, List<Course> courses, String title) {
         model.addAttribute("student", student);
         model.addAttribute("courses", courses);
         model.addAttribute("title", title);
-        model.addAttribute(activated, true);
     }
 
     private void setModelAttributes(Model model, List<Course> courses) {

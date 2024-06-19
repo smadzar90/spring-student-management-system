@@ -1,6 +1,19 @@
 <html lang="en"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="_layout">
+<head>
+    <script>
+        function submitForm() {
+            const select = document.getElementById("filterSelect");
+            const selectIndex = select.selectedIndex;
+            const value = select.options[selectIndex].value;
+
+            if (value !== "") {
+                document.getElementById("filterForm").submit();
+            }
+        }
+    </script>
+</head>
 <body>
 <div layout:fragment="content">
     <div class="mb-3 pt-3 pb-3 d-flex justify-content-center align-items-center">
@@ -11,6 +24,30 @@
             <p class="m-0 ml-2 text-muted">All active students</p>
         </div>
         <div class="ml-auto d-flex justify-content-center align-items-center pl-4 pr-4">
+            <div class="mr-4">
+                <form id="filterForm" action="/studentsystem/students" th:method="get">
+                    <div class="form-group">
+                        <label for="filterSelect">
+                        </label>
+                        <div class="input-group">
+                            <select class="form-control" id="filterSelect" name="filter">
+                                <option value="" disabled selected>Filter students</option>
+                                <option value="updated_desc">by Updated Desc</option>
+                                <option value="id">by ID</option>
+                                <option value="id_desc">by ID Desc</option>
+                                <option value="gpa">by GPA</option>
+                                <option value="gpa_desc">by GPA Desc</option>
+                                <option value="dob">by DOB</option>
+                                <option value="dob_desc">by DOB Desc</option>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" onclick="submitForm()">Search
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div class="mr-3">
                 <i class="fa-solid fa-graduation-cap icons"></i>
             </div>
@@ -43,13 +80,16 @@
                             <tbody>
                             <tr th:each="student: ${students}">
                                 <td class="align-middle" th:text="${student.getId()}"></td>
-                                <td class="align-middle" th:text="${student.getFirstName()} + ' ' + ${student.getLastName()}"></td>
+                                <td class="align-middle"
+                                    th:text="${student.getFirstName()} + ' ' + ${student.getLastName()}"></td>
                                 <td class="align-middle" th:text="${student.getGender()}"></td>
-                                <td class="align-middle" th:text="${student.getAddress() + ', ' + student.getState() + ', ' + student.getZipcode()}"></td>
+                                <td class="align-middle"
+                                    th:text="${student.getAddress() + ', ' + student.getState() + ', ' + student.getZipcode()}"></td>
                                 <td class="align-middle" th:text="${student.getEmail()}"></td>
                                 <td class="align-middle" th:text="${student.getPhoneNumber()}"></td>
                                 <td class="align-middle" th:text="${student.getDateOfBirth()}"></td>
-                                <td class="align-middle"  th:text="${student.getCumulativeGpa() != null ? student.getCumulativeGpa() : 'N/A'}"></td>
+                                <td class="align-middle"
+                                    th:text="${student.getCumulativeGpa() != null ? #numbers.formatDecimal(student.getCumulativeGpa(), 1, 2) : 'N/A'}"></td>
                             </tr>
                             </tbody>
                         </table>
