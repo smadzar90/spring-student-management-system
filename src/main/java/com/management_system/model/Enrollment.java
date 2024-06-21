@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "enrollments")
-public class Enrollment {
+public class Enrollment implements Comparable<Enrollment> {
 
     public Enrollment(String grade, Boolean completed, LocalDate completedDate, Student student, Course course) {
         this.grade = grade;
@@ -57,5 +57,10 @@ public class Enrollment {
                 ", completed='" + completed + '\'' +
                 ", student='" + student + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Enrollment other) {
+        return this.getUpdatedOn().compareTo(other.updatedOn);
     }
 }

@@ -24,20 +24,20 @@ public class EnrollmentSeeder {
      */
     public void setUp() {
         List<Enrollment> enrollments = new ArrayList<>();
-        enrollments.add(new Enrollment("A", true, LocalDate.of(2024, 6, 6), studentService.getStudentById(1), courseService.getCourseById(8)));
-        enrollments.add(new Enrollment("A", true, LocalDate.of(2024, 6, 6), studentService.getStudentById(1), courseService.getCourseById(1)));
-        enrollments.add(new Enrollment("C", true, LocalDate.of(2024, 6, 6), studentService.getStudentById(3), courseService.getCourseById(3)));
-        enrollments.add(new Enrollment("A", true, LocalDate.of(2024, 6, 6), studentService.getStudentById(4), courseService.getCourseById(4)));
-        enrollments.add(new Enrollment("B", true, LocalDate.of(2024, 6, 6), studentService.getStudentById(4), courseService.getCourseById(5)));
-        enrollments.add(new Enrollment("C", true, LocalDate.of(2024, 6, 6), studentService.getStudentById(6), courseService.getCourseById(6)));
-        enrollments.add(new Enrollment("A", true, LocalDate.of(2024, 6, 6), studentService.getStudentById(7), courseService.getCourseById(7)));
-        enrollments.add(new Enrollment("B", true, LocalDate.of(2024, 6, 6), studentService.getStudentById(8), courseService.getCourseById(8)));
-        enrollments.add(new Enrollment("C", true, LocalDate.of(2024, 6, 6), studentService.getStudentById(9), courseService.getCourseById(9)));
-        enrollments.add(new Enrollment("A", true, LocalDate.of(2024, 6, 6), studentService.getStudentById(10), courseService.getCourseById(10)));
-        enrollments.add(new Enrollment("B", true, LocalDate.of(2024, 6, 6), studentService.getStudentById(11), courseService.getCourseById(11)));
-        enrollments.add(new Enrollment("C", true, LocalDate.of(2024, 6, 6), studentService.getStudentById(12), courseService.getCourseById(12)));
-        enrollments.add(new Enrollment("A", true, LocalDate.of(2024, 6, 6), studentService.getStudentById(13), courseService.getCourseById(13)));
-        enrollments.add(new Enrollment("B", true, LocalDate.of(2024, 6, 6), studentService.getStudentById(14), courseService.getCourseById(14)));
+        enrollments.add(new Enrollment("A", true, LocalDate.now(), studentService.getStudentById(1), courseService.getCourseById(8)));
+        enrollments.add(new Enrollment("A", true, LocalDate.now(), studentService.getStudentById(1), courseService.getCourseById(1)));
+        enrollments.add(new Enrollment("C", true, LocalDate.now(), studentService.getStudentById(3), courseService.getCourseById(3)));
+        enrollments.add(new Enrollment("A", true, LocalDate.now(), studentService.getStudentById(4), courseService.getCourseById(4)));
+        enrollments.add(new Enrollment("B", true, LocalDate.now(), studentService.getStudentById(4), courseService.getCourseById(5)));
+        enrollments.add(new Enrollment("C", true, LocalDate.now(), studentService.getStudentById(6), courseService.getCourseById(6)));
+        enrollments.add(new Enrollment("A", true, LocalDate.now(), studentService.getStudentById(7), courseService.getCourseById(7)));
+        enrollments.add(new Enrollment("B", true, LocalDate.now(), studentService.getStudentById(8), courseService.getCourseById(8)));
+        enrollments.add(new Enrollment("C", true, LocalDate.now(), studentService.getStudentById(9), courseService.getCourseById(9)));
+        enrollments.add(new Enrollment("A", true, LocalDate.now(), studentService.getStudentById(10), courseService.getCourseById(10)));
+        enrollments.add(new Enrollment("B", true, LocalDate.now(), studentService.getStudentById(11), courseService.getCourseById(11)));
+        enrollments.add(new Enrollment("C", true, LocalDate.now(), studentService.getStudentById(12), courseService.getCourseById(12)));
+        enrollments.add(new Enrollment("A", true, LocalDate.now(), studentService.getStudentById(13), courseService.getCourseById(13)));
+        enrollments.add(new Enrollment("B", true, LocalDate.now(), studentService.getStudentById(14), courseService.getCourseById(14)));
         enrollments.add(new Enrollment("N/A", false, null, studentService.getStudentById(15), courseService.getCourseById(1)));
         enrollments.add(new Enrollment("N/A", false, null, studentService.getStudentById(12), courseService.getCourseById(3)));
         enrollments.add(new Enrollment("N/A", false, null, studentService.getStudentById(18), courseService.getCourseById(4)));

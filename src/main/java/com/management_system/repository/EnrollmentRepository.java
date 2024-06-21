@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
-    List<Enrollment> findAllByCompletedAndStudentId(Boolean completed, long studentId);
+    List<Enrollment> findAllByCompletedAndStudentIdOrderByUpdatedOnDesc(Boolean completed, long studentId);
 
     List<Enrollment> findAllByStudentId(Long studentId);
 

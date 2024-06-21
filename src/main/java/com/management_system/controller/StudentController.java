@@ -196,11 +196,10 @@ public class StudentController {
             return "redirect:/studentsystem/students/search/activity";
         }
         List<Enrollment> completedEnrollments = enrollmentService.getCompletedEnrollmentsByStudent(Long.parseLong(id));
-        List<Enrollment> notCompletedEnrollments = enrollmentService.getNotCompletedEnrollmentsByStudent(Long.parseLong(id));
-
+        List<Enrollment> incompleteEnrollments = enrollmentService.getNotCompletedEnrollmentsByStudent(Long.parseLong(id));
         setModelAttributes(model, student, "Student Activity");
         model.addAttribute("completedEnrollments", completedEnrollments);
-        model.addAttribute("notCompletedEnrollments", notCompletedEnrollments);
+        model.addAttribute("notCompletedEnrollments", incompleteEnrollments);
 
         return "student/activity";
     }

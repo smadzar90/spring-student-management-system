@@ -114,6 +114,7 @@ public class StudentService {
             }
         }
 
+        registeredCourses.sort((c1, c2) -> c2.getUpdatedOn().compareTo(c1.getUpdatedOn()));
         return registeredCourses;
     }
 

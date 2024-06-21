@@ -28,11 +28,11 @@ public class EnrollmentService {
     }
 
     public List<Enrollment> getCompletedEnrollmentsByStudent(long studentId) {
-        return enrollmentRepository.findAllByCompletedAndStudentId(true, studentId);
+        return enrollmentRepository.findAllByCompletedAndStudentIdOrderByUpdatedOnDesc(true, studentId);
     }
 
     public List<Enrollment> getNotCompletedEnrollmentsByStudent(long studentId) {
-        return enrollmentRepository.findAllByCompletedAndStudentId(false, studentId);
+        return enrollmentRepository.findAllByCompletedAndStudentIdOrderByUpdatedOnDesc(false, studentId);
     }
 
     public List<Long> getAllCourseIdsByStudentId(long studentId) {

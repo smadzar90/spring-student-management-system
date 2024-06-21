@@ -47,7 +47,7 @@ public class Course {
     private LocalDateTime updatedOn;
 
     @ManyToOne
-    @JoinColumn(name="mentor_id")
+    @JoinColumn(name = "mentor_id")
     private Mentor mentor;
 
     @OneToMany(mappedBy = "course")

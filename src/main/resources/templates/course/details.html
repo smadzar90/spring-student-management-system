@@ -33,7 +33,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="enrollment: ${course.getEnrollments()}">
+                            <tr th:each="enrollment: ${enrollments}">
                                 <td class="align-middle" th:text="${enrollment.getStudent().getId()}"></td>
                                 <td class="align-middle" th:text="${enrollment.getStudent().getFirstName()}"></td>
                                 <td class="align-middle" th:text="${enrollment.getStudent().getLastName()}"></td>

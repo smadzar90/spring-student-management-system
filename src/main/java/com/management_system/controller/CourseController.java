@@ -1,6 +1,7 @@
 package com.management_system.controller;
 
 import com.management_system.model.Course;
+import com.management_system.model.Enrollment;
 import com.management_system.model.Student;
 import com.management_system.service.CourseService;
 import com.management_system.service.StudentService;
@@ -44,7 +45,10 @@ public class CourseController {
             return "redirect:/studentsystem/courses";
         }
 
-        setModelAttributes(model, course);
+        List<Enrollment> enrollments = course.getEnrollments();
+        enrollments.sort((e1, e2) -> e2.getUpdatedOn().compareTo(e1.getUpdatedOn()));
+
+        setModelAttributes(model, course, enrollments);
         return "course/details";
     }
 
@@ -167,8 +171,9 @@ public class CourseController {
         model.addAttribute("coursesActive", true);
     }
 
-    private void setModelAttributes(Model model, Course course) {
+    private void setModelAttributes(Model model, Course course, List<Enrollment> enrollments) {
         model.addAttribute("course", course);
+        model.addAttribute("enrollments", enrollments);
         model.addAttribute("title", "Course Details");
         model.addAttribute("coursesActive", true);
     }
