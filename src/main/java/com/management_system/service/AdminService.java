@@ -36,6 +36,4 @@ public class AdminService {
         }
         return encoder.matches(password, admin.getPassword());
     }
-
-
 }

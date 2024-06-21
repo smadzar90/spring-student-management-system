@@ -15,8 +15,8 @@ public class MentorSeeder {
     private final MentorService mentorService;
 
     /**
-     * Seed the data to mentor table only if table is empty
-     * Mentor table should never be empty after the seed
+     * Seed the data to mentor table only if StudentSystemDB is empty
+     * Default data will be seeded
      */
     public void setUp() {
         List<Mentor> mentors = new ArrayList<Mentor>();

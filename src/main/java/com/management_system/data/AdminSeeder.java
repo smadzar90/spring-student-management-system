@@ -16,8 +16,8 @@ public class AdminSeeder {
     private final AdminService adminService;
 
     /**
-     * Seed the data to admin table only if table is empty
-     * Admin table should never be empty after the seed
+     * Seed the data to admin table only if StudentSystemDB is empty
+     * Default data will be seeded
      */
     public void setUp() {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

@@ -58,5 +58,4 @@ public class AdminController {
     private Boolean adminLoggedIn(HttpSession session) {
         return session.getAttribute("username") != null;
     }
-
 }

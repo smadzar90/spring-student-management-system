@@ -129,9 +129,9 @@ public class StudentController {
         if (adminNotLoggedIn(session)) {
             return "redirect:/login";
         }
+
         List<Student> students = studentService.getAllStudentsByUpdatedOnDesc();
         setModelAttributes(model, students, "Delete Student");
-
         return "student/delete_student";
     }
 
@@ -151,6 +151,7 @@ public class StudentController {
         if (adminNotLoggedIn(session)) {
             return "redirect:/login";
         }
+
         setModelAttributes(model, "registration");
         return getString(id, model);
     }
@@ -195,12 +196,12 @@ public class StudentController {
         if (student == null) {
             return "redirect:/studentsystem/students/search/activity";
         }
+
         List<Enrollment> completedEnrollments = enrollmentService.getCompletedEnrollmentsByStudent(Long.parseLong(id));
         List<Enrollment> incompleteEnrollments = enrollmentService.getNotCompletedEnrollmentsByStudent(Long.parseLong(id));
         setModelAttributes(model, student, "Student Activity");
         model.addAttribute("completedEnrollments", completedEnrollments);
         model.addAttribute("notCompletedEnrollments", incompleteEnrollments);
-
         return "student/activity";
     }
 

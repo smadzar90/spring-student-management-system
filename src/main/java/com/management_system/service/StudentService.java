@@ -143,9 +143,6 @@ public class StudentService {
         }
     }
 
-    //update that double precision is at most 2 3.57 when needed
-    //4.000 -> 4.0
-    //3.5768 -> 3.57
     public void updateGPAForStudent(Student student) {
         List<Enrollment> enrollmentsByStudent = enrollmentService.getCompletedEnrollmentsByStudent(student.getId());
 
@@ -178,5 +175,4 @@ public class StudentService {
             default -> 0.0;
         };
     }
-
 }

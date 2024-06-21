@@ -15,7 +15,7 @@ public class StudentSeeder {
     private final StudentService studentService;
 
     /**
-     * Seed the data to student table only if table is empty
+     * Seed the data to student table only if StudentSystemDB is empty
      * Default data will be seeded
      */
     public void setUp() {

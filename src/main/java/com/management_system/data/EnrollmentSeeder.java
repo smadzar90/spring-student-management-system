@@ -19,7 +19,7 @@ public class EnrollmentSeeder {
     private final EnrollmentService enrollmentService;
 
     /**
-     * Seed the data to enrollment table only if table is empty
+     * Seed the data to enrollment table only if StudentSystemDB is empty
      * Default data will be seeded
      */
     public void setUp() {
