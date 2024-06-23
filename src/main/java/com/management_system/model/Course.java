@@ -50,7 +50,7 @@ public class Course {
     @JoinColumn(name = "mentor_id")
     private Mentor mentor;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", cascade = CascadeType.REMOVE)
     private List<Enrollment> enrollments = new ArrayList<>();
 
     @Override

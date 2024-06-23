@@ -141,7 +141,6 @@ public class StudentController {
             return "redirect:/login";
         }
 
-        courseService.updateCoursesStatsByStudentDeleted(id);
         studentService.deleteStudentById(id);
         return "redirect:/studentsystem/students/delete";
     }

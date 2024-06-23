@@ -75,6 +75,7 @@ public class StudentService {
     }
 
     public void deleteStudentById(long id) {
+        courseService.updateCoursesStatsByStudentDeleted(id);
         studentRepository.deleteById(id);
     }
 
