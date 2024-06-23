@@ -16,4 +16,5 @@ it provides a reliable framework for handling various administrative tasks relat
 
 ## Database Setup
 
+![alt text](/images/db_setup.png)
 
