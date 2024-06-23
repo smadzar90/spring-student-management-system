@@ -30,7 +30,7 @@ it provides a reliable framework for handling various administrative tasks relat
 2. **Open the project in IDE**
         
 3. **Configure Database**
-    - Open application.properties and configure PostgreSQL settings.
+    - Open application.properties and configure PostgreSQL settings
 
         ```
         spring.datasource.url=jdbc:postgresql://localhost:5432/your_database_name
@@ -49,7 +49,7 @@ it provides a reliable framework for handling various administrative tasks relat
    ```
    
 5. **Access the Application:**
-    - Open a web browser.
+    - Open a web browser
     - Access the application at: [http://localhost:8080](http://localhost:8080)
 
 
