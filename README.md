@@ -22,52 +22,39 @@ it provides a reliable framework for handling various administrative tasks relat
 
 ## Installation and Setup
 
-1. **Clone or Download the Projectr**
+1. **Clone or Download the Project**
+   ```
+   git clone <repository_url>
+   ```
 
-2. **Set Up Express Server**
-    - Open a new terminal window.
-    - Navigate to the nodejs directory:
-      
-        ```
-        cd full-stack-car-dealerships-app/functions/sample/nodejs
-        ```
-    - Install the Express.js framework:
-      
-        ```
-        npm install express
-        ```
-    - Run the Express server to fetch dealership data:
-      
-        ```
-        node get-dealership.js
-        ```
+2. **Open the project in IDE**
         
-3. **Set Up Flask Server**
-    - Open a new terminal window.
-    - Navigate to the python directory:
-      
+3. **Configure Database**
+    - Open application.properties and configure PostgreSQL settings.
         ```
-        cd full-stack-car-dealerships-app/functions/sample/python
+        spring.datasource.url=jdbc:postgresql://localhost:5432/your_database_name
+        spring.datasource.username=your_database_username
+        spring.datasource.password=your_database_password
         ```
-    - Run the Flask server to simulate reviews:
-      
-        ```
-        python reviews.py
-        ```
+    - Default data will be sedeed on new database
 
-4. **Access the Application:**
+4. **Build and Run the application**
+    - Build project
+    - Run main class annotated with @SpringBootApplication
+  
+   or use Maven:
+
+   ```
+   mvn spring-boot:run
+   ```
+   
+5. **Access the Application:**
     - Open a web browser.
     - Access the application at: [http://localhost:8000](http://localhost:8000)
 
 
-## 👤 Author
+## Author
 - Stipan Madzar
-
-
-## 📧  Contact
-- ✉️ Email: [smadzar90@student.se.edu](mailto:smadzar90@student.se.edu)
-- 🐙 GitHub: [smadzar90](https://github.com/smadzar90)
-- 💼 LinkedIn: [Stipan Madzar](https://www.linkedin.com/in/stipan-madzar-b6b857225/)
 
 
 
