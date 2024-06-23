@@ -37,8 +37,6 @@ it provides a reliable framework for handling various administrative tasks relat
         spring.datasource.username=your_database_username
         spring.datasource.password=your_database_password
         ```
-        
-    - Default data will be seeded in the new database.
 
 4. **Build and Run the application**
     - Build project
