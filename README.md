@@ -22,21 +22,23 @@ it provides a reliable framework for handling various administrative tasks relat
 
 ## Installation and Setup
 
-1. **Clone or Download the Project**
+1. **Clone the repository**
    ```
-   git clone <repository_url>
+   git clone https://github.com/smadzar90/spring-student-management-system.git
    ```
 
 2. **Open the project in IDE**
         
 3. **Configure Database**
     - Open application.properties and configure PostgreSQL settings.
+
         ```
         spring.datasource.url=jdbc:postgresql://localhost:5432/your_database_name
         spring.datasource.username=your_database_username
         spring.datasource.password=your_database_password
         ```
-    - Default data will be sedeed on new database
+        
+    - Default data will be seeded in the new database.
 
 4. **Build and Run the application**
     - Build project
