@@ -16,7 +16,7 @@ it provides a reliable framework for handling various administrative tasks relat
 * HTML
 * Bootstrap
 
-## Database Setup
+## Database Structure
 
 <img src="/images/db_setup.png" alt="database setup" width="700px" height="400px">
 
