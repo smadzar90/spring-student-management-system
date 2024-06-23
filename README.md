@@ -16,5 +16,5 @@ it provides a reliable framework for handling various administrative tasks relat
 
 ## Database Setup
 
-<img src="/images/db_setup.png" alt="database setup" width="500px" height="400px">
+<img src="/images/db_setup.png" alt="database setup" width="700px" height="400px">
 
