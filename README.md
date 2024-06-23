@@ -8,11 +8,11 @@ it provides a reliable framework for handling various administrative tasks relat
 ## Technologies
 
 * Spring Boot
-* 🐘 PostgreSQL
-* 📦 Spring Data JPA
-* 🍃 Thymeleaf
-* 📄 HTML
-* 🅱️ Bootstrap
+* PostgreSQL
+* Spring Data JPA
+* Thymeleaf
+* HTML
+* Bootstrap
 
 ## Database Setup
 
